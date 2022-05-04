@@ -1,0 +1,29 @@
+.input {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  &_control {
+    border: 1px solid #b1b1b1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 10px;
+    font: 1rem/1.4 'Roboto', sans-serif;
+    background-color: #dbe2ef;
+    &::placeholder {
+      color: #7b7b7b;
+    }
+  }
+
+  &_button {
+    border-radius: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    background: #3f72af url('./images/plus.svg') no-repeat center center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
