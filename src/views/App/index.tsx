@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 import { useTodoStore } from '../../data/stores/useTodoStore';
 import { InputPlus } from '../components/InputPlus';
+import { InputTask } from '../components/InputTask';
 
 export const App: React.FC = () => {
   const [tasks, createTask, updateTask, removeTask] = useTodoStore((state) => [
@@ -10,12 +11,6 @@ export const App: React.FC = () => {
     state.updateTask,
     state.removeTask,
   ]);
-
-  useEffect(() => {
-    createTask('Hello');
-  }, []);
-
-  console.log(tasks);
 
   return (
     <article className={styles.article}>
@@ -29,7 +24,21 @@ export const App: React.FC = () => {
           }}
         />
       </section>
-      <section className={styles.article_section}></section>
+      <section className={styles.article_section}>
+        {!tasks.length && (
+          <p className={styles.not_articles_text}>There is no one task.</p>
+        )}
+        {tasks.map((task) => (
+          <InputTask
+            id={task.id}
+            key={task.id}
+            title={task.title}
+            onDone={removeTask}
+            onEdited={updateTask}
+            onRemoved={removeTask}
+          />
+        ))}
+      </section>
     </article>
   );
 };

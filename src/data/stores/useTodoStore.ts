@@ -33,9 +33,7 @@ export const useTodoStore = create<TodoStore>((set, get) => ({
   removeTask: (id: string) => {
     const { tasks } = get();
     set({
-      tasks: tasks.filter((task) => ({
-        title: task.id !== id,
-      })),
+      tasks: tasks.filter((task) => task.id !== id),
     });
   },
 }));
